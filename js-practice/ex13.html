@@ -1,6 +1,28 @@
 <html>
     
+    <p>Right click inspect, console to see</p>
     
+    
+    <script>
+        function fizzbuzz(countTo, divis3, divis5){
+            for(var i =1; i <= countTo; i++){
+                if(i % 3 == 0 && i%5 == 0){
+                    console.log(divis3 + divis5);
+                   }
+                else if(i % 5 == 0){
+                    console.log(divis5);
+                        }
+                else if(i%3 == 0){
+                    console.log(divis3);
+                        }
+                else{
+                    console.log(i);
+                }
+            }
+        }
+        
+        fizzbuzz(100, "Soup", "Reme");
+    </script>
     
     
     

@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title> Testing </title>
+    </head>
+    
+    <body>
+        <div id="space">
+        
+        </div>
+        
+        <form>
+            Text : <br>
+            <input type="text" id="toAdd">
+            <button onclick="add();return false;"> append </button>
+        </form>
+        
+        <input type="text" id="change">
+        <button onclick="change();return false;"> change </button>
+        
+        <button onclick="dele();return false;"> Exterminate </button>
+        
+    </body>
+    <script>
+        function add(){
+            var toAdd = document.getElementById("toAdd").value;
+            var p = document.createElement("p");
+            p.setAttribute("id","child");
+            var message = document.createTextNode(toAdd);
+            p.appendChild(message);
+            var sp = document.getElementById("space");
+            sp.appendChild(p);
+        }
+        
+        function change(){
+            var c = document.getElementById("change").value;
+            document.getElementById("child").innerHTML = c;
+        }
+        
+        function dele(){
+            var parent = document.getElementById("space");
+            var toDelete = document.getElementById("child");
+            
+            parent.removeChild(toDelete);
+        }
+        
+    </script>
+</html>

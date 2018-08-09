@@ -1,0 +1,89 @@
+<html>
+    <head>
+    
+    </head>
+    
+    <body>
+        <div id="space">
+            
+        </div>
+        <div id = members>
+        
+        </div>
+    </body>
+    
+    <script>
+        
+        var requestURL = "https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/example.json";
+        var request = new XMLHttpRequest();
+        request.open("GET", requestURL);
+        request.responseType = "json";
+        request.send();
+        request.onload = function() {
+        var requestData = request.response;
+        var myH1 = document.createElement("h1");
+        myH1.textContent = requestData["squadName"];
+            
+        var myHome = document.createElement("h2");
+        myHome.textContent = "Based in : " + requestData["homeTown"];
+        
+        var formationDOB = document.createElement("p");
+        formationDOB.textContent = "formation : " + requestData["formed"]
+        
+        var secretB = document.createElement("p");
+        secretB.textContent = "base : " + requestData["secretBase"];
+        
+        var status = document.createElement("p");
+        status.textContent = "status : " + requestData["active"];
+        
+        <!-- Members need to be implemented -->
+        var jon = requestData["members"];
+        for(var i=0;i<jon.length;i++){
+            var obj = jon[i];
+            console.log(obj.name);
+            
+            
+            var totalMems = document.getElementById("members");
+            var member = document.createElement("div");
+            member.setAttribute("id","member"+i);
+            var name = document.createElement("p");
+            var age = document.createElement("p");
+            var secretID = document.createElement("p");
+            var power = document.createElement("div");
+            var herodetails = document.createTextNode(obj.name);
+            name.appendChild(herodetails);
+            herodetails = document.createTextNode(obj.age);
+            age.appendChild(herodetails);
+            herodetails = document.createTextNode(obj.secretIdentity);
+            
+            secretID.appendChild(herodetails);
+            
+            member.appendChild(name);
+            member.appendChild(age);
+            member.appendChild(secretID);
+            
+            totalMems.appendChild(member);
+    
+            console.log(obj.age);
+            console.log(obj.secretIdentity);
+            for(var a=0;a<obj.powers.length; a++){
+                console.log(obj.powers[a]);
+                var pw = document.createElement("p");
+                pw = document.createTextNode(obj.powers[a]);
+                power.appendChild(pw);
+                member.appendChild(power);
+            }
+        }
+            
+        
+        var s = document.getElementById("space");
+        s.appendChild(myH1);
+        s.appendChild(myHome);
+        s.appendChild(formationDOB);
+        s.appendChild(secretB);
+        s.appendChild(status);
+            
+        }
+        
+    </script>
+</html>
