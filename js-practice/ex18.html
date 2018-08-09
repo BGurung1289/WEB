@@ -5,13 +5,58 @@
     
     
     <body>
-    
-    
+        
+        <div id="space">
+            
+        </div>
+        
+        <div id="inputs">
+            <p> Enter house name : </p>
+            <input type="text" id="search"><br>
+            <button onclick="search()"> Search </button>
+            <button onclick="dele()"> Clear </button>
+        </div>
     </body>
     
     <script>
-        
-    
-    
+        "use Strict"
+        function search(){
+            
+            let searching = document.getElementById("search").value;
+            let requestURL = "https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/kings.json";
+            let request = new XMLHttpRequest();
+            request.open("GET", requestURL);
+            request.responseType = "json";
+            request.send();
+            request.onload = function() {
+            var requestData = request.response;
+
+            for(let i=0; i<requestData.length;i++){
+                let myH1 = requestData[i];
+                if(searching == myH1.nm){
+                   let result = document.getElementById("space");
+                   let p = document.createElement("p");
+                    p.setAttribute("class","child");
+                    let city = document.createElement("p");
+                    let house = document.createElement("p");
+                    let reign = document.createElement("p");
+                   let addRes = document.createTextNode(myH1.nm);
+                    p.appendChild(addRes);
+                    addRes = document.createTextNode(myH1.cty);
+                    city.appendChild(addRes);
+                    addRes = document.createTextNode(myH1.hse);
+                    house.appendChild(addRes);
+                    addRes = document.createTextNode(myH1.yrs);
+                    reign.appendChild(addRes);
+                       result.appendChild(p);    
+                        result.appendChild(city);
+                    result.appendChild(house);
+                    result.appendChild(reign);
+                    break;
+                   }
+            }
+
+            }
+        }
     </script>
 </html>

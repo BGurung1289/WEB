@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <link href = "ex19.css" rel="stylesheet" type="text/css">
+    </head>
+    
+    <body>
+        <h2 id="title"> Garage </h2>
+        <div id="check">
+            <button id="checkin" onclick="showTextb(); this.onclick=null"> Check-In </button>
+            <button id="checkout"> Check-Out </button>
+            <button id="output"> Output Garage </button>
+            <button id="calculate"> Bill </button>
+        </div>
+        
+        <div id="textBoxes">
+            
+        </div>
+    </body>
+    
+    <script>
+        "use Strict";
+        function vMaker(model,type){
+            let vehi ={};
+            vehi.model = model;
+            vehi.type = type;
+            return vehi;
+        }
+        function checkIn(){
+            
+            clear();
+        }
+        
+        function showTextb(){
+            let parent = document.getElementById("textBoxes");
+            let mod = document.createElement("input");
+            let submit = document.createElement("button");
+            let typ = document.createElement("input");
+            let buttonText = document.createTextNode("Submit");
+            
+            submit.setAttribute("id","submitButton");
+            submit.appendChild(buttonText);
+            submit.onclick = function(){checkIn()};
+            mod.setAttribute("id","model");
+            mod.setAttribute("id","type");
+            parent.appendChild(mod);
+            parent.appendChild(typ);
+            parent.appendChild(submit);
+        }
+        
+        function clear(){
+            let parent = document.getElementById("textBoxes");
+            let toDelete = document.getElementById("model");
+            toDelete = document.getElementById("submitButton");
+            parent.remove();
+        }
+    </script>
+</html>
