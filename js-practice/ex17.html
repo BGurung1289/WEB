@@ -1,6 +1,6 @@
 <html>
     <head>
-    
+        <link href = "ex17.css" rel="stylesheet" type="text/css">
     </head>
     
     <body>
@@ -47,8 +47,10 @@
             var member = document.createElement("div");
             member.setAttribute("id","member"+i);
             var name = document.createElement("p");
+            name.setAttribute("id","name");
             var age = document.createElement("p");
             var secretID = document.createElement("p");
+            secretID.setAttribute("id","secret")
             var power = document.createElement("div");
             var herodetails = document.createTextNode(obj.name);
             name.appendChild(herodetails);
